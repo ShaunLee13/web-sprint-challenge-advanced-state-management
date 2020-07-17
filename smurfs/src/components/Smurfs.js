@@ -1,13 +1,31 @@
 import React from "react";
 import Smurf from "./Smurf";
 
-const Smurfs = () => {
+import {connect} from 'react-redux'
+
+const Smurfs = props => {
+    console.log(props.list)
     return (
         <div>
+            {props.list ? (
+                <div>
+                    {props.list.map(smurf => {
+                        return (
+                            <Smurf key={smurf.id} smurf={smurf}/>
+                        )
+                    })}
+                </div>) 
+            : (<p>Please wait, entering the village!</p>)}
             <p>These are our smurfs!</p>
-            <Smurf />
         </div>
     )
 }
 
-export default Smurfs
+
+const mapStateToProps = state => {
+    return {
+        list:state.list
+    }
+   }
+   
+   export default connect(mapStateToProps, {})(Smurfs)

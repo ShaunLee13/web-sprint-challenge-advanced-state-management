@@ -4,7 +4,6 @@ import Smurf from "./Smurf";
 import {connect} from 'react-redux'
 
 const Smurfs = props => {
-    console.log(props.list)
     return (
         <div>
             {props.list ? (
